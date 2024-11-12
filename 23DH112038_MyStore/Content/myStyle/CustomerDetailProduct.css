@@ -1,0 +1,160 @@
+﻿
+/* Tổng quát cho phần container */
+.container-fluid {
+    padding: 20px;
+}
+
+/* Thiết lập chiều ngang của các cột và căn chỉnh */
+.div-horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 15px; /* Khoảng cách giữa các khối */
+}
+
+/* Khối sản phẩm bên trái */
+.col-md-3.pro.section {
+    flex: 1;
+    text-align: center;
+}
+
+    .col-md-3.pro.section img {
+        max-width: 100%;
+        border-radius: 8px; /* Bo góc ảnh */
+    }
+
+/* Khối giữa */
+.col-md-5.pro-section {
+    flex: 2;
+}
+
+    .col-md-5.pro-section h4 {
+        color: #333;
+    }
+
+.pro-sale, .pro-price {
+    font-weight: bold;
+}
+
+.pro-price {
+    color: #e74c3c; /* Màu đỏ cho giá sản phẩm */
+}
+
+/* Khối mô tả sản phẩm */
+.col-md-5.pro-section h5 {
+    margin-top: 20px;
+}
+
+/* Khối sản phẩm liên quan */
+.featuredProd h4 {
+    font-weight: bold;
+    margin-top: 30px;
+    color: #333;
+}
+
+/* .featured-container */
+/* Dùng flexbox để sắp xếp các sản phẩm liên quan theo hàng ngang, tự động xuống dòng khi không đủ không gian và cách nhau 10px */
+.featured-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* .fproduct-item */
+/* Mỗi sản phẩm có chiều rộng 30% dòng chứa, với đường viền màu xám nhạt, bo góc và căn giữa nội dung */
+.fproduct-item {
+    width: 30%;
+    border: 1px solid #e0e0e0; /* Đường viền xám nhạt */
+    border-radius: 8px; /* Bo góc khung sản phẩm */
+    padding: 10px; /* Khoảng đệm bên trong */
+    text-align: center; /* Căn giữa nội dung */
+}
+
+    /* .fproduct-item img */
+    /* Ảnh sản phẩm chiếm tối đa 100% chiều rộng khung chứa và có bo góc */
+    .fproduct-item img {
+        max-width: 100%; /* Chiều rộng tối đa là 100% */
+        border-radius: 8px; /* Bo góc ảnh */
+    }
+
+/* .col-md-3.pro-section */
+/* Khối bên phải có chiều rộng linh hoạt */
+.col-md-3.pro-section {
+    flex: 1;
+    text-decoration: none;
+}
+
+/* .form-group h4 */
+/* Tiêu đề của khối form có phông chữ đậm và khoảng cách phía trên là 20px */
+.form-group h4 {
+    font-weight: bold; /* Phông chữ đậm */
+    margin-top: 20px; /* Khoảng cách trên */
+}
+
+/* .btn-info */
+/* Thiết lập nút với màu nền xanh dương, chữ trắng, khoảng đệm, và bo góc */
+.btn-info {
+    background-color: #3498db; /* Màu nền xanh dương */
+    color: white; /* Màu chữ trắng */
+    padding: 10px 20px; /* Khoảng đệm dọc 10px và ngang 20px */
+    border-radius: 5px; /* Bo góc nút */
+    text-align: center; /* Căn giữa chữ */
+}
+
+/* .ListProduct h4 */
+/* Tiêu đề của khối sản phẩm bán chạy có phông chữ đậm, màu xám đậm và khoảng cách trên 30px */
+.ListProduct h4 {
+    font-weight: bold; /* Phông chữ đậm */
+    color: #333; /* Màu xám đậm */
+    margin-top: 30px; /* Khoảng cách trên */
+}
+
+/* .List-container */
+/* Sắp xếp các sản phẩm bán chạy theo hàng ngang, tự động xuống dòng và cách nhau 10px */
+.List-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* .lproduct-item */
+/* Mỗi sản phẩm bán chạy chiếm 30% dòng, với đường viền xám nhạt, bo góc và căn giữa nội dung */
+.lproduct-item {
+    width: 30%;
+    border: 1px solid #e0e0e0; /* Đường viền xám nhạt */
+    border-radius: 8px; /* Bo góc khung sản phẩm */
+    padding: 10px; /* Khoảng đệm bên trong */
+    text-align: center; /* Căn giữa nội dung */
+}
+
+    /* .lproduct-item img */
+    /* Ảnh của sản phẩm bán chạy chiếm tối đa 100% chiều rộng khung chứa và có bo góc */
+    .lproduct-item img {
+        max-width: 100%; /* Chiều rộng tối đa là 100% */
+        border-radius: 8px; /* Bo góc ảnh */
+    }
+
+/* .pagination-container */
+/* Căn giữa khối phân trang với khoảng cách phía trên là 20px */
+.pagination-container {
+    display: flex;
+    justify-content: center; /* Căn giữa nội dung */
+    margin-top: 20px; /* Khoảng cách trên */
+}
+
+    /* .pagination-container a */
+    /* Các liên kết phân trang có khoảng cách hai bên, màu xanh dương cho chữ, đường viền xám nhạt, bo góc, và không có gạch chân */
+    .pagination-container a {
+        margin: 0 5px; /* Khoảng cách hai bên là 5px */
+        padding: 8px 12px; /* Khoảng đệm dọc 8px và ngang 12px */
+        color: #3498db; /* Màu chữ xanh dương */
+        border: 1px solid #ddd; /* Đường viền xám nhạt */
+        border-radius: 5px; /* Bo góc liên kết */
+        text-decoration: none; /* Loại bỏ gạch chân */
+    }
+
+        /* .pagination-container a:hover */
+        /* Khi rê chuột lên liên kết phân trang, nền chuyển thành màu xanh dương và chữ thành màu trắng */
+        .pagination-container a:hover {
+            background-color: #3498db; /* Màu nền khi hover */
+            color: white; /* Màu chữ khi hover */
+        }

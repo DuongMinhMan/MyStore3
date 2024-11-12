@@ -1,0 +1,31 @@
+﻿@*Sẽ được truyền giữa trang Partial view và trang cha*@
+@model _23DH112038_MyStore.Models.Category
+
+@*Form con sẽ được nhúng vào form cha là Edit.cshtml và Create.cshtml*@
+
+<table class="table bg-secondary text-light form-group">
+    @*Nền xám chữ trắng*@
+    <tr>
+        <th class="bg-black" style="color: yellow; align-content: center">
+            @*Nền đen chữ vàng, căn giữa*@
+            @*@Html.DisplayNameFor(model => model.CategoryName)*@
+            TÊN DANH MỤC
+        </th>
+        <th class="bg-black" style="color: yellow">
+            @*Nền đen chữ vàng*@
+        </th>
+    </tr>
+    <tr>
+        <td style="font-weight: bold; font-size: 16px">
+            @*In đậm*@
+            @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } }) @*Tạo một trường nhập liệu cho thuộc tính CategoryName của model.*@
+            @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" }) @*bắt lỗi trên trường này*@
+        </td>
+        <td>
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-success" /> | @*Nút xanh*@
+                @Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "btn btn-info btn-md" }) @*Nút xanh*@
+            </div>
+        </td>
+    </tr>
+</table>

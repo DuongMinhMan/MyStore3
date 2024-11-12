@@ -1,0 +1,40 @@
+﻿@model _23DH112038_MyStore.Models.Category
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>
+    XOÁ DANH MỤC <br />
+    Bạn chắc chắn muốn xoá danh mục này không?
+</h2>
+
+<table class="table bg-secondary text-light">
+    @*Nền xám chữ trắng*@
+    <tr>
+        <th class="bg-black" style="color: yellow; align-content: center">
+            @*Nền đen chữ vàng, căn giữa*@
+            TÊN DANH MỤC
+        </th>
+        <th class="bg-black" style="color: yellow"></th>
+    </tr>
+    <tr>
+        <td style="font-weight: bold; font-size: 16px">
+            @*In đậm*@
+            @Html.DisplayFor(modelItem => Model.CategoryName)
+        </td>
+        <td>
+            @* dùng để gửi dữ liệu từ client lên server qua POST*@
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions">
+                    <input type="submit" value="Xoá" class="btn btn-danger btn-md" /> | @*Nút đỏ*@
+                    @Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "btn btn-info btn-md" }) @*Nút xanh*@
+                </div>
+            }
+        </td>
+    </tr>
+</table>

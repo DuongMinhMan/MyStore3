@@ -1,0 +1,183 @@
+﻿@model _23DH112038_MyStore.Models.ViewModel.Cart
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+<script language="JavaScript">
+    function cartUpdateQuantity(id, newQuantity) {
+        if (newQuantity < 1) return;
+        const form = document.createElement('form');
+        form.method = 'post';
+        form.action = '@Url.Action("UpdateQuantity", "Cart")";
+        const idInput = document.createElement('input');
+        idInput.type = "hidden";
+        idInput.name = 'id';
+        idInput.value = id;
+        form.appendChild(idInput);
+        const quantityInput = document.createElement('input');
+        quantityInput.type = 'hidden';
+
+        quantityInput.name = 'quantity';
+
+        quantityInput.value = newQuantity;
+
+        form.appendChild(quantityInput);
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
+<style>
+    /* Đặt kiểu cho toàn bộ phần thân trang */
+    body {
+        font-family: Arial, sans-serif; /* Font chữ cơ bản */
+        background-color: #f9f9f9; /* Màu nền nhạt */
+        margin: 0; /* Xóa khoảng cách mặc định */
+    }
+
+    /* Đặt kiểu cho tiêu đề chính */
+    h2 {
+        text-align: center; /* Căn giữa tiêu đề */
+        color: #333; /* Màu chữ tối */
+        margin-top: 20px; /* Khoảng cách phía trên */
+    }
+
+    /* Đặt kiểu cho hộp giỏ hàng */
+    .shoppingcart {
+        padding: 20px; /* Tạo khoảng trống bên trong hộp */
+        margin: auto; /* Căn giữa hộp */
+        max-width: 1000px; /* Chiều rộng tối đa của hộp */
+    }
+
+    /* Đặt kiểu cho bảng giỏ hàng */
+    .cart-section .table {
+        width: 100%; /* Bảng chiếm 100% chiều rộng */
+        background-color: #fff; /* Nền trắng cho bảng */
+        border-radius: 8px; /* Bo tròn nhẹ */
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+    }
+
+    /* Đặt kiểu cho tiêu đề của bảng */
+    .cart-section th {
+        color: #555; /* Màu chữ xám cho tiêu đề bảng */
+        text-align: left; /* Căn trái */
+        padding: 10px; /* Khoảng cách bên trong */
+    }
+
+    /* Đặt kiểu cho các hàng trong bảng */
+    .cart-section td {
+        padding: 10px; /* Khoảng cách bên trong mỗi ô */
+        vertical-align: middle; /* Căn giữa theo chiều dọc */
+    }
+
+    /* Đặt kiểu cho các nút tăng giảm số lượng */
+    .cart-section button {
+        background-color: #eee; /* Màu nền xám nhẹ */
+        border: none; /* Loại bỏ đường viền */
+        padding: 5px; /* Khoảng cách bên trong */
+        cursor: pointer; /* Thay đổi con trỏ khi di chuột */
+    }
+
+    /* Đặt kiểu cho cột chứa ảnh sản phẩm */
+    .cart-section img {
+        max-height: 80px; /* Chiều cao tối đa cho ảnh */
+        border-radius: 4px; /* Bo tròn nhẹ */
+    }
+
+    /* Đặt kiểu cho ô tổng giá */
+    .cart-section strong {
+        font-size: 18px; /* Kích thước chữ lớn hơn */
+    }
+
+    /* Đặt kiểu cho ô tổng giá với chữ màu đỏ */
+    .cart-section span {
+        color: red; /* Màu chữ đỏ cho giá trị tổng */
+    }
+
+    /* Đặt kiểu cho nút 'Mua hàng' và 'Tiếp tục mua hàng' */
+    .cart-button {
+        background-color: blue;
+        display: inline-block; /* Hiển thị dưới dạng khối nội tuyến */
+        padding: 10px 15px; /* Khoảng cách bên trong cho nút */
+        margin-top: 20px; /* Khoảng cách phía trên */
+        color: #fff; /* Màu chữ trắng */
+        text-decoration: none; /* Loại bỏ gạch chân */
+        border-radius: 4px; /* Bo tròn nút */
+    }
+        /* Đặt hiệu ứng khi di chuột vào nút */
+        .cart-button:hover {
+            opacity: 0.9; /* Giảm độ sáng khi di chuột vào nút */
+        }
+
+    .Con-Shopping {
+        background-color: blue;
+    }
+
+    .cart-banner {
+        width: 100%; /* Chiếm toàn bộ chiều rộng của trang */
+        height: 400px; /* Chiều cao cố định cho banner */
+        background-image: url('https://images.unsplash.com/photo-1457369804613-52c61a468e7d?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3'); /* Hình nền của banner */
+        background-size: cover; /* Đảm bảo hình nền bao phủ toàn bộ khu vực banner */
+</style>
+<h2>GIỎ HÀNG</h2>
+
+<div class="shoppingcart">
+
+    @if (!Model.Items.Any())
+    {<p>Bạn chưa có sản phẩm nào trong giỏ. </p> }
+
+    else
+    {
+        <div class="col-md-8 cart-section">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th colspan="2">Sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Thành tiến</th>
+                        <th title="Xóa tất cả mặt hàng trong gió">
+                            <a href="@Url.Action("ClearCart", "Cart", null)"> <img src="~/Content/Image/delete.jpg" style="max-height: 20px;" /></a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Items)
+                    {
+                        <tr>
+                            <td><img src="@item.ProductImage" alt="@item. ProductName" style="max-height:80px;" /></td>
+                            <td class="col-md-3">@item.ProductName</td>
+                            <td>
+                                @using (Html.BeginForm("Update Quantity", "Cart", FormMethod.Post))
+                                {
+                                    <input type="hidden" name="id" value="@item.ProductID" />
+                                    <button type="button" style="width: 20px;" onclick="cartUpdateQuantity(@item.ProductID, @item.Quantity - 1)">-</button>
+                                    <input type="number" name="quantity" value="@item.Quantity" min="1" max="100" style="width: 40px; text-align:right;" readonly />
+                                    <button type="button" style="width: 20px;" onclick="cartUpdateQuantity(@item. ProductID, @item. Quantity + 1)">+</button>
+                                }
+                            </td>
+
+                            <td>@item.UnitPrice.ToString("N0")</td>
+                            <td>@item.TotalPrice.ToString("N0")</td>
+                            <td>
+                                <a href="@Url.Action("RemoveFromCart", "Cart", new { id = item.ProductID })">
+                                    <img src="~/Content/Image/delete.jpg" style="max-height:20px;" />
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <hr />
+        </div>
+        <div class="col-md-3 cart-section">
+            <div><strong>Tổng giá trị: &nbsp;<span style="color: red;">@Model.TotalValue().ToString("N0")</span></strong></div>
+            <div>@Html.ActionLink("Mua hàng", "Checkout", "Cart", null, new { @class = "cart-button" })</div>
+        </div>
+    }
+</div>
+<div class="col-md-12"> @Html.ActionLink("Tiếp tục mua hàng", "Index", "Home", null, new { @class = " cart-button" })</div>
+<div class="cart-banner container-fluid">
+</div>
+
+
+

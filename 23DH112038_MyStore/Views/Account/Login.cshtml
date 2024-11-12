@@ -1,0 +1,122 @@
+﻿@model _23DH112038_MyStore.Models.ViewModel.LoginVM
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+<style>
+    /* Style cho form đăng nhập */
+    .log-form {
+        max-width: 500px; /* Giới hạn chiều rộng form */
+        margin: 0 auto; /* Căn giữa form */
+        padding: 20px; /* Thêm khoảng cách xung quanh */
+        border: 1px solid #ddd; /* Viền form */
+        border-radius: 5px; /* Bo tròn góc form */
+        background-color: #f9f9f9; /* Màu nền form */
+    }
+
+    h2 {
+        font-size: 24px; /* Kích thước chữ tiêu đề */
+        color: #333; /* Màu chữ tiêu đề */
+        text-align: center; /* Căn giữa tiêu đề */
+        margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
+    }
+
+    .Log-container {
+        margin-bottom: 15px; /* Khoảng cách giữa các nhóm form */
+    }
+
+    .log-label {
+        font-weight: bold; /* Chữ đậm cho nhãn */
+        color: #555; /* Màu chữ nhãn */
+    }
+
+    .log-control {
+        border: 1px solid #ccc; /* Viền cho ô input */
+        border-radius: 4px; /* Bo tròn ô input */
+        padding: 10px; /* Khoảng cách bên trong ô input */
+        font-size: 16px; /* Kích thước chữ ô input */
+    }
+
+    .accountbtn {
+        background-color: #5bc0de; /* Màu nền nút đăng nhập */
+        color: #fff; /* Màu chữ nút đăng nhập */
+        border: none; /* Bỏ viền nút đăng nhập */
+        padding: 10px 20px; /* Khoảng cách bên trong nút đăng nhập */
+        font-size: 16px; /* Kích thước chữ nút đăng nhập */
+        cursor: pointer; /* Hình con trỏ khi hover */
+        border-radius: 4px; /* Bo tròn nút đăng nhập */
+    }
+
+        .accountbtn:hover {
+            background-color: #31b0d5; /* Màu nền khi hover */
+        }
+
+    .Enter-acc {
+        margin-top: 15px; /* Khoảng cách trên cho phần đăng ký */
+        font-size: 14px; /* Kích thước chữ cho phần đăng ký */
+        color: #333; /* Màu chữ phần đăng ký */
+        text-align: center; /* Căn giữa phần đăng ký */
+    }
+
+        .Enter-acc a {
+            color: #5bc0de; /* Màu chữ cho link đăng ký */
+            text-decoration: underline; /* Gạch chân link */
+        }
+
+            .Enter-acc a:hover {
+                color: #31b0d5; /* Màu chữ khi hover link */
+            }
+</style>
+
+
+
+<!DOCTYPE html>
+<div>
+    <div style="text-align: center" class="bg-success">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+        @* Hiển thị thông báo lỗi chung *@
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+    </div>
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-horizontal log-form", rule = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group Log-container">
+            <h2 class="col-md-6" style="text-align: center;">Đăng nhập</h2>
+        </div>
+        <!--Tên đăng nhập-->
+        <div class="form-group Log-container">
+            @Html.LabelFor(m => m.Username, new { @class = "control-label log-label col-md-2" })
+            <div class="col-md-8" style="width: 100%">
+                @Html.TextBoxFor(m => m.Username, new { @class = "form-control log-control", style = "width: 100%;" })
+                @Html.ValidationMessageFor(m => m.Username)
+            </div>
+        </div>
+        <!--Mật khẩu-->
+        <div class="form-group Log-container">
+            @Html.LabelFor(m => m.Password, new { @class = "control-label log-label col-md-2" })
+            <div class="col-md-8">
+                @Html.TextBoxFor(m => m.Password, new { @class = "form-control log-control", style = "width: 100%;" })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+        </div>
+        <div class="form-group Log-container container-fluid">
+            <div class="col-md-offset-2 col-md-4">
+                <input type="submit" value="Đăng nhập" class="accountbtn " /><br />
+                <p class="Enter-acc">Bạn Chưa Có Tài Khoản? <a href="@Url.Action("Register", "Account", null)" />Đăng ký ngay</p>
+            </div>
+        </div>
+    }
+</div>
+
+

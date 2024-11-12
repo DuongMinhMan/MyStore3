@@ -1,0 +1,32 @@
+﻿@model _23DH112038_MyStore.Models.Category
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>THÔNG TIN CHI TIẾT</h2>
+
+<table class="table bg-secondary text-light">
+    @*Nền xám chữ trắng*@
+    <tr>
+        <th class="bg-black" style="color: yellow; align-content: center">
+            @*Nền đen chữ vàng, căn giữa*@
+            @*@Html.DisplayNameFor(model => model.CategoryName)*@
+            TÊN DANH MỤC
+        </th>
+        <th class="bg-black" style="color: yellow">
+            @*Nền đen chữ vàng*@
+        </th>
+    </tr>
+    <tr>
+        <td style="font-weight: bold; font-size: 16px">
+            @*In đậm*@
+            @Html.DisplayFor(model => model.CategoryName)
+        </td>
+        <td>
+            @Html.ActionLink("Cập nhật", "Edit", new { id = Model.CategoryID }, new { @class = "btn btn-info btn-md" }) |  @*Nút xanh*@
+            @Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "btn btn-danger btn-md" })  @*Nút đỏ*@
+        </td>
+    </tr>
+</table>

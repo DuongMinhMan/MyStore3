@@ -1,0 +1,159 @@
+﻿@model _23DH112038_MyStore.Models.ViewModel.RegisterVM
+@{
+    ViewBag.Title = "Register";
+    Layout = null;
+}
+
+<style>
+    /* Style cho form đăng ký */
+    .form-horizontal {
+        max-width: 600px; /* Giới hạn chiều rộng của form */
+        margin: 0 auto; /* Căn giữa form */
+        padding: 20px; /* Thêm khoảng cách xung quanh */
+        border: 1px solid #ddd; /* Viền form */
+        border-radius: 5px; /* Bo tròn góc */
+        background-color: #f9f9f9; /* Màu nền form */
+    }
+
+    h2 {
+        font-size: 24px; /* Kích thước chữ tiêu đề */
+        color: #333; /* Màu chữ tiêu đề */
+        text-align: center; /* Căn giữa tiêu đề */
+        margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
+    }
+
+    .reg-label {
+        font-weight: bold; /* Chữ đậm cho nhãn */
+        color: #555; /* Màu chữ nhãn */
+    }
+
+    .reg-control {
+        border: 1px solid #ccc; /* Viền cho ô input */
+        border-radius: 4px; /* Bo tròn ô input */
+        padding: 10px; /* Thêm khoảng cách bên trong ô input */
+        font-size: 16px; /* Kích thước chữ ô input */
+    }
+
+    .accountbtn {
+        background-color: #5bc0de; /* Màu nền nút đăng ký */
+        color: #fff; /* Màu chữ nút đăng ký */
+        border: none; /* Bỏ viền nút đăng ký */
+        padding: 10px 20px; /* Khoảng cách bên trong nút đăng ký */
+        font-size: 16px; /* Kích thước chữ nút đăng ký */
+        cursor: pointer; /* Thêm hình con trỏ khi hover */
+        border-radius: 4px; /* Bo tròn nút đăng ký */
+    }
+
+        .accountbtn:hover {
+            background-color: #31b0d5; /* Màu nền khi hover */
+        }
+
+    .Create-Acc {
+        margin-top: 15px; /* Khoảng cách trên cho phần đăng nhập */
+        font-size: 14px; /* Kích thước chữ cho phần đăng nhập */
+        color: #333; /* Màu chữ phần đăng nhập */
+        text-align: center; /* Căn giữa phần đăng nhập */
+    }
+
+        .Create-Acc a {
+            color: #5bc0de; /* Màu chữ cho link đăng nhập */
+            text-decoration: underline; /* Gạch chân link */
+        }
+
+            .Create-Acc a:hover {
+                color: #31b0d5; /* Màu chữ khi hover link */
+            }
+</style>
+<div>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <h2 class="col-md-6">Đăng ký tài khoản</h2>
+            </div>
+            <!--Tên đăng nhập-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.Username, new { @class = "col-md-2 reg-label" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "reg-control" } })
+                    @Html.ValidationMessageFor(model => model.Username)
+                </div>
+            </div>
+            <!--Mật khẩu-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, new { @class = "col-md-2 reg-label" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "reg-control" } })
+                    @Html.ValidationMessageFor(model => model.Password)
+                </div>
+            </div>
+            <!--Xác nhận mật khẩu-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.ConfirmPassword, new { @class = "col-md-2 reg-label" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "reg-control" } })
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                </div>
+            </div>
+            <!--Họ tên khách hàng-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.CustomerName, new { @class = "col-md-2 reg-label" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "reg-control" } })
+                    @Html.ValidationMessageFor(model => model.CustomerName)
+                </div>
+            </div>
+            <!--SĐT khách hàng-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.CustomerPhone, new { @class = "col-md-2 reg-label" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.CustomerPhone, new { htmlAttributes = new { @class = "reg-control" } })
+                    @Html.ValidationMessageFor(model => model.CustomerPhone)
+                </div>
+            </div>
+            <!--Email khách hàng-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.CustomerEmail, new { @class = "col-md-2 reg-label" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.CustomerEmail, new { htmlAttributes = new { @class = "reg-control" } })
+                    @Html.ValidationMessageFor(model => model.CustomerEmail)
+                </div>
+            </div>
+            <!--Địa chỉ khách hàng-->
+            <div class="form-group">
+                @Html.LabelFor(model => model.CustomerAddress, new { @class = "col-md-2 reg-label" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.CustomerAddress, new { htmlAttributes = new { @class = "reg-control" } })
+                    @Html.ValidationMessageFor(model => model.CustomerAddress)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-4">
+                    <input type="submit" value="đăng ký" class="accountbtn" /><br />
+                    <p class="Create-Acc">Bạn Đã Có Tài khoản? <a href="@Url.Action("Login", "Account", null)" />Đăng nhập</p>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+
+
+

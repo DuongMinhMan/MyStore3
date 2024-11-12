@@ -1,0 +1,297 @@
+﻿<style>
+    /* Tổng quan */
+    body {
+        font-family: Arial, sans-serif; /* Thiết lập font chữ chung cho trang */
+        margin: 0; /* Loại bỏ khoảng cách mặc định */
+        padding: 0; /* Loại bỏ khoảng cách mặc định */
+    }
+
+    /* Container chung cho phần header */
+    .container {
+        display: flex; /*Sắp xếp các phần tử theo hàng ngang */
+        justify-content: space-between; /*Căn đều khoảng cách giữa các phần tử*/
+        align-items: center; /*Căn giữa các phần tử theo chiều dọc */
+        padding: 10px 20px; /*Khoảng cách bên trong container */
+        background-color: black; /*Màu nền đen */
+        color: white; /*Màu chữ trắng */
+    }
+
+    /* Logo */
+    .logo {
+        font-size: 24px; /* Cỡ chữ lớn hơn để làm nổi bật logo */
+        font-weight: bold; /* Chữ đậm để logo nổi bật */
+    }
+
+    /* Thanh tìm kiếm */
+    .search-bar input {
+        padding: 5px; /* Khoảng cách bên trong ô tìm kiếm */
+        width: 200px; /* Độ rộng của ô tìm kiếm */
+    }
+
+    /* Giỏ hàng và đăng nhập */
+    .cart, .login a {
+        color: white; /* Màu chữ trắng cho cả giỏ hàng và đăng nhập */
+        text-decoration: none; /* Xóa gạch chân mặc định */
+        margin-left: 20px; /* Khoảng cách giữa các mục */
+    }
+
+        .cart a {
+            color: white; /* Đảm bảo rằng màu chữ của giỏ hàng là trắng */
+            text-decoration: none; /* Xóa gạch chân cho liên kết giỏ hàng */
+        }
+
+    /* Menu điều hướng */
+    nav ul {
+        list-style-type: none; /* Loại bỏ dấu chấm đầu dòng cho các mục */
+        padding: 0; /* Loại bỏ khoảng cách bên trong */
+        margin: 0; /* Loại bỏ khoảng cách bên ngoài */
+        display: flex; /* Sắp xếp các mục theo hàng ngang */
+        justify-content: center; /* Căn giữa các mục trong menu */
+        background-color: white; /* Màu nền trắng */
+    }
+
+        nav ul li {
+            margin: 0 20px; /* Khoảng cách giữa các mục */
+        }
+
+            nav ul li a {
+                color: black; /* Màu chữ đen cho các liên kết */
+                text-decoration: none; /* Xóa gạch chân của các liên kết */
+                padding: 10px 20px; /* Khoảng cách bên trong của các mục menu */
+                display: block; /* Biến các mục thành block để dễ căn chỉnh */
+            }
+    /* Banner */
+    * {
+        margin: 0; /* Loại bỏ khoảng cách mặc định của tất cả các phần tử */
+        padding: 0; /* Loại bỏ khoảng cách trong của tất cả các phần tử */
+        box-sizing: border-box; /* Đảm bảo các phần tử tính toán kích thước với cả padding và border */
+    }
+
+    .banner-index {
+        width: 100%; /* Chiếm toàn bộ chiều rộng của trang */
+        height: 400px; /* Chiều cao cố định cho banner */
+        background-image: url('https://thumbs.dreamstime.com/b/old-books-wooden-table-library-vintage-style-ai-generated-content-design-background-instagram-facebook-wall-323974717.jpg'); /* Hình nền của banner */
+        background-size: cover; /* Đảm bảo hình nền bao phủ toàn bộ khu vực banner */
+        background-position: center; /* Canh giữa hình nền trong banner */
+        display: flex; /* Căn chỉnh nội dung */
+        justify-content: center; /* Căn giữa nội dung theo chiều ngang */
+        align-items: center; /* Căn giữa nội dung theo chiều dọc */
+        position: relative; /* Tạo vị trí tương đối cho phần overlay */
+    }
+
+    .overlay {
+        position: absolute; /* Phủ lên toàn bộ banner */
+        top: 0;
+        left: 0;
+        width: 100%; /* Chiếm toàn bộ chiều rộng */
+        height: 100%; /* Chiếm toàn bộ chiều cao */
+        background-color: rgba(0, 0, 0, 0.5); /* Màu nền đen với độ trong suốt 50% */
+    }
+
+    .banner-content {
+        position: relative; /* Đặt vị trí tương đối để hiển thị nội dung phía trên overlay */
+        z-index: 2; /* Đảm bảo nội dung nằm phía trên overlay */
+        color: white; /* Màu chữ trắng cho nội dung */
+        text-align: center; /* Căn giữa nội dung */
+    }
+
+        .banner-content h1 {
+            font-size: 48px; /* Cỡ chữ lớn cho tiêu đề */
+            margin-bottom: 10px; /* Khoảng cách dưới tiêu đề */
+            letter-spacing: 2px; /* Tăng khoảng cách giữa các chữ cái */
+            text-transform: uppercase; /* Viết hoa tất cả các chữ cái */
+            color: white; /* Đảm bảo tiêu đề có màu trắng */
+        }
+
+        .banner-content p {
+            font-size: 18px; /* Cỡ chữ vừa phải cho đoạn văn */
+            margin-bottom: 20px; /* Khoảng cách dưới đoạn văn */
+        }
+
+    /* Container chính cho phần sản phẩm nổi bật */
+    .featured-products {
+        padding: 40px 20px; /* Thêm khoảng cách xung quanh phần sản phẩm */
+        text-align: center;
+        background-color: #f9f9f9; /* Màu nền sáng để tạo sự tương phản cho phần sản phẩm */
+    }
+
+    /* Main container cho phần New Products */
+    .new-products { /* Phần bao bọc toàn bộ New Products */
+        padding: 40px 20px; /* Thêm không gian xung quanh */
+        text-align: center;
+        background-color: #f9f9f9; /* Màu nền nhẹ hơn để tách biệt */
+    }
+
+        /* Tiêu đề cho phần New Products */
+        .new-products h2 { /* Phong cách cho tiêu đề New Products */
+            font-size: 32px; /* Kích thước chữ lớn hơn để nổi bật */
+            margin-bottom: 30px; /* Khoảng cách dưới tiêu đề */
+            color: #333; /* Màu xám đậm */
+        }
+
+    /* Bố trí các sản phẩm trong hàng */
+    .product-grid-new { /* Bố cục chia thành lưới cho sản phẩm */
+        display: flex; /* Hiển thị các sản phẩm trong một hàng ngang */
+        justify-content: center; /* Căn giữa các sản phẩm trong lưới */
+        gap: 20px; /* Khoảng cách giữa các sản phẩm */
+        flex-wrap: wrap; /* Cho phép xuống dòng nếu không đủ chỗ */
+    }
+
+    /* Thẻ chứa từng sản phẩm */
+    .product-card-new { /* Phong cách cho từng thẻ sản phẩm */
+        width: 250px; /* Chiều rộng cố định */
+        border: 1px solid #ddd; /* Viền nhẹ quanh mỗi sản phẩm */
+        border-radius: 8px; /* Bo góc các thẻ sản phẩm */
+        overflow: hidden;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+        transition: transform 0.3s ease; /* Hiệu ứng mượt khi hover */
+    }
+
+        /*Hiệu ứng hover cho thẻ sản phẩm */
+        .product-card-new:hover { /*Thẻ sẽ nổi lên khi hover */
+            transform: translateY(-10px); /*Di chuyển thẻ lên */
+        }
+
+    /* Vùng chứa hình ảnh sản phẩm */
+    .product-image-new {
+        width: 100%; /* Đầy đủ chiều rộng */
+        height: 200px; /* Chiều cao cố định */
+        background-size: cover; /* Ảnh phủ kín */
+        background-position: center;
+    }
+
+    /* Vùng chứa thông tin sản phẩm */
+    .product-info-new { /* Phần chứa thông tin sản phẩm */
+        padding: 15px;
+        text-align: left; /* Căn lề trái */
+    }
+
+    /* Phần phân trang chung */
+    .pagination {
+        display: flex;
+        justify-content: center; /* Căn giữa các nút phân trang */
+        list-style: none; /* Xóa gạch đầu dòng */
+        padding: 0;
+        margin: 20px 0;
+    }
+        /* Phong cách chung cho nút phân trang */
+        .pagination li {
+            margin: 0 5px; /* Khoảng cách giữa các nút */
+        }
+
+        .pagination a,
+        .pagination span {
+            display: inline-block;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: #333; /* Màu chữ */
+            background-color: #f0f0f0; /* Màu nền của nút */
+            border-radius: 5px; /* Bo góc cho nút */
+            border: 1px solid #ddd; /* Viền của nút */
+        }
+
+            /* Hiệu ứng hover cho nút */
+            .pagination a:hover {
+                background-color: #ff4d4d; /* Đổi màu nền khi hover */
+                color: white; /* Đổi màu chữ khi hover */
+            }
+
+    /* Footer */
+    footer {
+        background-color: #333; /* Màu nền tối cho phần footer */
+        color: #fff; /* Màu chữ trắng cho nội dung trong footer */
+        padding: 20px; /* Khoảng cách bên trong của footer */
+        text-align: center; /* Căn giữa nội dung bên trong footer */
+    }
+    /* Định dạng cho các liên kết mạng xã hội bên trong footer */
+    .social a {
+        color: #89CFF0; /* Màu xanh dương nhạt cho các liên kết mạng xã hội */
+        margin: 0 10px; /* Khoảng cách giữa các liên kết */
+        text-decoration: none; /* Xóa gạch chân mặc định của các liên kết */
+    }
+</style>
+@model _23DH112038_MyStore.Models.ViewModel.HomeProductVM
+@{
+    ViewBag.Title = "Index";
+    @*<link rel="stylesheet" type="text/css" href="~/Content/myStyle/CustomerHome.css" />*@
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container container-fluid">
+            <div class="logo">ANANAS SHOP</div>
+            @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+            {
+                <div class="form-group search-bar">
+                    @Html.TextBoxFor(m => m.SearchTerm, new
+                    {
+                   @class = "search-input",
+                   placeholder = "Tìm kiếm sản phẩm"
+               })
+                    <button types="submit" class="search-button">Tìm Kiếm</button>
+                </div>
+            }
+            <div class="cart">
+                <a href="https://localhost:44384/Cart/Index">Giỏ hàng</a>
+            </div>
+
+            @if (Session["Username"] != null)
+            {
+                <div style="display: flex; align-items:center">
+                    <div class="login" style="margin-right:24px;font-size:20px">
+                        Chào!
+                        @Session["Username"]
+                    </div>
+
+                    <a style="text-decoration:none;color:red" href="@Url.Action("Logout", "Account")">Đăng xuất</a>
+
+
+                </div>
+
+            }
+            else
+            {
+                <div class="login">
+                    <a href="https://localhost:44384/Account/Login">Đăng nhập</a>
+                </div>}
+
+        </div>
+    </header>
+
+    <!-- Menu điều hướng -->
+    <nav class="container-fluid">
+        <ul>
+            <li><a href="https://localhost:44384/Home/Index">Trang chủ</a></li>
+            <li><a href="https://localhost:44384/Home/Contact">Liên hệ</a></li>
+            <li><a href="https://localhost:44384/Home/About">Thông tin</a></li>
+        </ul>
+    </nav>
+
+    <!-- Banner -->
+    <div class="banner-index container-fluid">
+        <div class="overlay"></div>
+        <div class="banner-content">
+            <h1>MUA SÁCH GIÁ RẺ</h1>
+            <p>Thay Đổi Tư Duy, Thay Đổi Số Phận</p>
+        </div>
+    </div>
+    <hr />
+    <!--Sản phẩm nổi bật-->
+    @Html.Partial("_PVFeatureProduct", Model)
+
+    <!--Sản phẩm mới-->
+    @Html.Partial("_PVNewProduct", Model)
+    <!-- Footer -->
+</body>
+</html>

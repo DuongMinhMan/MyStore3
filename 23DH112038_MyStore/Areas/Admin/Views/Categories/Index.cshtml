@@ -1,0 +1,39 @@
+﻿@model IEnumerable<_23DH112038_MyStore.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Danh Sách Danh Mục Sản Phẩm</h2>
+
+<table class="table bg-secondary text-light col-md-6">
+    @*Nền xám chữ trắng*@
+    <tr>
+        <th class="bg-black col-md-4" style="color: yellow; align-content: center">
+            @*Nền đen chữ vàng, căn giữa*@
+            @*@Html.DisplayNameFor(model => model.CategoryName)*@
+            TÊN DANH MỤC
+        </th>
+        <th class="bg-black col-md-2" style="color: yellow">
+            @*Nền đen chữ vàng*@
+            @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-warning" }) @*Nút vàng*@
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="font-weight: bold; font-size: 16px">
+                @*In đậm*@
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.ActionLink("Cập nhật", "Edit", new { id = item.CategoryID }, new { @class = "btn btn-info btn-md" }) | @*Nút xanh*@
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.CategoryID }, new { @class = "btn btn-success btn-md" }) |  @*Nút xanh*@
+                @Html.ActionLink("Xoá", "Delete", new { id = item.CategoryID }, new { @class = "btn btn-danger btn-md" }) @*Nút đỏ*@
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,26 @@
+﻿@model _23DH112038_MyStore.Models.ViewModel.HomeProductVM
+<link href="~/Content/myStyle/CustomerHome.css" rel="stylesheet" type="text/css" />
+
+@*Hiển thị danh sách sản phẩm*@
+@if (Model.FeaturedProducts != null && Model.FeaturedProducts.Any())//Kiểm tra danh sách FeaturedProducts # null và có nội dung
+{
+    <div class="featured-products container-fluid">
+        <h2>Sản phẩm nổi bật</h2>
+        <div class="product-grid-new">
+            @foreach (var product in Model.FeaturedProducts)
+            {
+                <div class="product-card-new">
+                    <a href="@Url.Action("ProductDetails", "Home", new {id = product.ProductID})">
+                        <img class="product-image-new" src="@Html.DisplayFor(modelItem => product.ProductImage)" />
+                    </a>
+                    <div class="product-info-new">
+                        <p class="prodPrice">@Html.DisplayFor(modelItem => product.ProductPrice) </p>
+                        <p class="prodName">@Html.DisplayFor(modelItem => product.ProductName) </p>
+                        <p class="prodCate">@Html.DisplayFor(modelItem => product.Category.CategoryName) </p>
+                        <p class="prodSale">Đã bán:&nbsp; @Html.DisplayFor(modelItem => product.OrderDetails.Count) </p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

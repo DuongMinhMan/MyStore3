@@ -1,0 +1,110 @@
+﻿<style>
+    /* Định dạng chung cho toàn bộ trang */
+    body {
+        line-height: 1.6; /* Khoảng cách dòng */
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Định dạng tiêu đề cửa hàng */
+    .shop-title {
+        color: #333; /* Màu chữ chính cho tiêu đề */
+        font-size: 24px; /* Kích thước chữ lớn hơn để làm nổi bật */
+        font-weight: bold; /* Tăng độ đậm để tiêu đề nổi bật */
+        text-align: center; /* Canh giữa tiêu đề */
+        margin-bottom: 20px; /* Thêm khoảng cách dưới tiêu đề */
+    }
+
+        /* Định dạng đoạn văn */
+        .shop-title p {
+            color: #555; /* Màu chữ nhạt hơn để dễ đọc cho nội dung */
+            font-size: 18px; /* Kích thước chữ vừa phải cho đoạn văn */
+            text-align: justify; /* Căn đều hai bên cho đoạn văn */
+            margin: 15px auto; /* Tạo khoảng cách giữa các đoạn văn */
+            max-width: 800px; /* Giới hạn chiều rộng để không quá dài */
+            line-height: 1.6; /* Tăng khoảng cách dòng giúp dễ đọc */
+        }
+
+    /* Định dạng cho phần highlight */
+    .shop-highlight {
+        color: #ff8c00; /* Màu cam nổi bật cho highlight */
+        font-weight: bold; /* Đậm chữ để dễ nhìn hơn */
+    }
+    /* Định dạng cho khoảng cách chung */
+    p {
+        margin-bottom: 15px; /* Tạo khoảng cách dưới mỗi đoạn văn */
+    }
+
+    .footer-banner {
+        width: 100%; /* Chiếm toàn bộ chiều rộng của trang */
+        height: 400px; /* Chiều cao cố định cho banner */
+        background-image: url('https://images.unsplash.com/photo-1457369804613-52c61a468e7d?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3'); /* Hình nền của banner */
+        background-size: cover; /* Đảm bảo hình nền bao phủ toàn bộ khu vực banner */
+        background-position: center; /* Canh giữa hình nền trong banner */
+    }
+</style>
+
+@model _23DH112038_MyStore.Models.ViewModel.ProductSearchVM
+@{
+    ViewBag.Title = "Contact";
+    ViewBag.Message = "Welcome to Ananas Shop 🤩 - điểm đến hàng đầu cho những cuốn sách chất lượng và đa dạng 😎!";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+    <link href="~/Content/myStyle/CustomerHome.css" rel="stylesheet" />
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container container-fluid">
+            <div class="logo">ANANAS SHOP</div>
+            @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+            {
+                <div class="form-group search-bar">
+                    @Html.TextBoxFor(m => m.SearchTerm, new
+                    {
+                   @class = "search-input",
+                   placeholder = "Tìm kiếm sản phẩm"
+               })
+                    <button types="submit" class="search-button">Tìm Kiếm</button>
+                </div>
+            }
+            <div class="cart">
+                <a href="#">Giỏ hàng</a>
+            </div>
+            <div class="login">
+                <a href="http://localhost:50429/Home/Login">Đăng nhập</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu điều hướng -->
+    <nav class="container-fluid">
+        <ul>
+            <li><a href="https://localhost:44384/Home/Index">Trang chủ</a></li>
+            <li><a href="https://localhost:44384/Home/Contact">Liên hệ</a></li>
+            <li><a href="https://localhost:44384/Home/About">Thông tin</a></li>
+        </ul>
+    </nav>
+    <hr style="border: 5px solid grey" />
+
+    <!--Phần giới thiệu-->
+    <h3 class="shop-title">@Html.ViewBag.Message</h3>
+
+    <p class="shop-title"><span class="shop-highlight">Ananas Shop</span></p>
+    <p><strong style="color:red">Số điện thoại:</strong> 0987661747</p>
+    <p><strong style="color:red">Địa chỉ:</strong> Địa chỉ:123 đường Sư Vạn Hạnh, TP.HCM</p>
+    <p>
+        <strong style="color:red">Support:</strong> Support@example.com<br />
+        <strong style="color:red">Marketing:</strong> Marketing@example.com
+    </p>
+    <div class="footer-banner container-fluid">
+    </div>
+</body>
+</html>
